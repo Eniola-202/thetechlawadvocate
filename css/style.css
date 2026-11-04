@@ -369,7 +369,7 @@ textarea.form-control {
   background-color: var(--theme-color-dark);
 }
 .dark-layout .preloader:after {
-  background-image: url(../images/Logo.png);
+  background-image: url(../images/preloader-shield.png);
 }
 .dark-layout .sticky-header {
   background-color: var(--theme-color-dark);
@@ -506,7 +506,7 @@ li {
 .preloader:after {
   -webkit-animation: pulse 1s infinite linear;
   animation: pulse 1s infinite linear;
-  background-image: url(../images/Logo.png);
+  background-image: url(../images/preloader-shield.png);
   background-position: center center;
   background-repeat: no-repeat;
   content: "";

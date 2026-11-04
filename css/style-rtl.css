@@ -509,7 +509,7 @@ li {
   background-repeat: no-repeat;
   -webkit-animation: pulse 1s infinite linear;
   animation: pulse 1s infinite linear;
-  background-image: url(../images/Logo.png);
+  background-image: url(../images/shield.png);
   content: "";
 }
 .preloader:before {
