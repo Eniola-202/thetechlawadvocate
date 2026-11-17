@@ -6,6 +6,136 @@
 <!-- Stylesheets Logo -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
+<style>
+  .document-catalogue {
+    background-color: #f7f8fa;
+    padding: 110px 0 120px;
+    position: relative;
+  }
+
+  .document-catalogue .catalogue-header {
+    margin: 0 auto 35px;
+    max-width: 760px;
+    text-align: center;
+  }
+
+  .document-catalogue .catalogue-header h2 {
+    color: var(--theme-color2);
+    margin-bottom: 12px;
+  }
+
+  .document-catalogue .catalogue-header p {
+    margin-bottom: 28px;
+  }
+
+  .document-search {
+    margin: 0 auto;
+    max-width: 620px;
+    position: relative;
+  }
+
+  .document-search .search-icon {
+    color: var(--theme-color1);
+    left: 18px;
+    position: absolute;
+    top: 17px;
+  }
+
+  .document-search input {
+    background: #fff;
+    border: 1px solid #e4e6ea;
+    border-radius: 4px;
+    box-shadow: 0 8px 25px rgba(39, 55, 69, 0.06);
+    height: 56px;
+    padding: 0 20px 0 48px;
+    width: 100%;
+  }
+
+  .document-search input:focus {
+    border-color: var(--theme-color1);
+    outline: none;
+  }
+
+  .document-list {
+    background: #fff;
+    border: 1px solid #e6e8eb;
+    margin: 0 auto;
+    max-width: 980px;
+  }
+
+  .document-item {
+    align-items: center;
+    border-bottom: 1px solid #e6e8eb;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    min-height: 78px;
+    padding: 15px 24px;
+  }
+
+  .document-item:last-child {
+    border-bottom: 0;
+  }
+
+  .document-item:hover {
+    background-color: #fbfaf7;
+  }
+
+  .document-item .document-number {
+    align-items: center;
+    background: var(--theme-color2);
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    flex: 0 0 36px;
+    font-size: 14px;
+    font-weight: 700;
+    height: 36px;
+    justify-content: center;
+    width: 36px;
+  }
+
+  .document-item .document-name {
+    color: var(--theme-color2);
+    flex: 1;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .document-item .purchase-btn {
+    flex: 0 0 auto;
+    padding: 11px 18px;
+  }
+
+  .document-empty {
+    color: #6b7280;
+    display: none;
+    padding: 35px 20px;
+    text-align: center;
+  }
+
+  @media (max-width: 575.98px) {
+    .document-catalogue {
+      padding: 75px 0 80px;
+    }
+
+    .document-item {
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 15px;
+    }
+
+    .document-item .document-name {
+      padding-top: 7px;
+    }
+
+    .document-item .purchase-btn {
+      margin-left: 48px;
+      width: calc(100% - 48px);
+    }
+  }
+</style>
 
 <link rel="shortcut icon" href="images/shield.png" type="image/x-icon">
 <link rel="icon" href="images/shield.png" type="image/x-icon">
@@ -72,7 +202,7 @@
                       <li><a href="page-team-details.html">Attorney Details</a></li>
                     </ul>
                   </li>
-                  <li> <a href="service.html">Services</a>
+                  <li> <a href="market-place.html">Marketplace</a>
                   <li><a href="page-case.html">Case Study</a></li>
                    <li><a href="page-testimonial.html">Testimonial</a></li>
                   
@@ -211,61 +341,147 @@
 	</section>
 	<!-- end main-content -->
 
-	<!-- Pricing Section -->
-  <section class="pricing-section pt-150 pb-150">
-    <div class="bg bg-image" style="background-image: url(./images/background/pricing1.jpg)"></div>
-    <div class="icon-pattern-11 bounce-y"></div>
+	<!-- Document Catalogue -->
+  <section class="document-catalogue">
     <div class="auto-container">
-      <div class="row"> 
-        <!-- pricing-block -->
-        <div class="pricing-block col-xl-4 col-lg-4 col-md-6 p-0 wow flipInY animated">
-          <div class="inner-box wow fadeInLeft animated">
-            <div class="content-box"> <span>Business Document</span>
-              <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download Document</button>
-            </div>
-            <div class="list-sec">
-              <ul class="list">
-                <li> Non-Disclosure Agreement</li>
-                <li> Professionally prepared template</li>
-                <li> Ready for immediate download</li>
-              </ul>
-            </div>
-          </div>
+      <div class="catalogue-header">
+        <h2>Find the right legal document</h2>
+        <p>Browse our professionally prepared templates and select a document to purchase.</p>
+        <div class="document-search">
+          <label class="sr-only" for="documentSearch">Search legal documents</label>
+          <i class="fa fa-search search-icon" aria-hidden="true"></i>
+          <input type="search" id="documentSearch" placeholder="Search documents by name..." autocomplete="off">
         </div>
-        <!-- pricing-block -->
-        <div class="pricing-block col-xl-4 col-lg-4 col-md-6 p-0 wow flipInY animated">
-          <div class="inner-box active">
-            <div class="content-box"> <span>Privacy Document</span>
-              <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download Document</button>
-            </div>
-            <div class="list-sec">
-              <ul class="list">
-                <li> Privacy Policy Agreement</li>
-                <li> Professionally prepared template</li>
-                <li> Ready for immediate download</li>
-              </ul>
-            </div>
-          </div>
+      </div>
+      <div class="document-list" id="documentList" aria-live="polite">
+        <div class="document-item" data-document-name="Non-Disclosure Agreement">
+          <span class="document-number">1</span>
+          <span class="document-name">Non-Disclosure Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
         </div>
-        <!-- pricing-block -->
-        <div class="pricing-block col-xl-4 col-lg-4 col-md-6 p-0 wow flipInY animated">
-          <div class="inner-box wow fadeInRight animated">
-            <div class="content-box"> <span>Website Document</span>
-              <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download Document</button>
-            </div>
-            <div class="list-sec">
-              <ul class="list">
-                <li> Website Terms of Service</li>
-                <li> Professionally prepared template</li>
-                <li> Ready for immediate download</li>
-              </ul>
-            </div>
-          </div>
+        <div class="document-item" data-document-name="Privacy Policy Agreement">
+          <span class="document-number">2</span>
+          <span class="document-name">Privacy Policy Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
         </div>
+        <div class="document-item" data-document-name="Website Terms of Service">
+          <span class="document-number">3</span>
+          <span class="document-name">Website Terms of Service</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Cookie Policy">
+          <span class="document-number">4</span><span class="document-name">Cookie Policy</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Data Processing Agreement">
+          <span class="document-number">5</span><span class="document-name">Data Processing Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Data Protection Impact Assessment">
+          <span class="document-number">6</span><span class="document-name">Data Protection Impact Assessment</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Website Privacy Notice">
+          <span class="document-number">7</span><span class="document-name">Website Privacy Notice</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Website Disclaimer">
+          <span class="document-number">8</span><span class="document-name">Website Disclaimer</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Software Licence Agreement">
+          <span class="document-number">9</span><span class="document-name">Software Licence Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="SaaS Agreement">
+          <span class="document-number">10</span><span class="document-name">SaaS Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Website Development Agreement">
+          <span class="document-number">11</span><span class="document-name">Website Development Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Mobile App Development Agreement">
+          <span class="document-number">12</span><span class="document-name">Mobile App Development Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Technology Services Agreement">
+          <span class="document-number">13</span><span class="document-name">Technology Services Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Consultancy Agreement">
+          <span class="document-number">14</span><span class="document-name">Consultancy Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Employment Agreement">
+          <span class="document-number">15</span><span class="document-name">Employment Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Independent Contractor Agreement">
+          <span class="document-number">16</span><span class="document-name">Independent Contractor Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Corporate Governance Policy">
+          <span class="document-number">17</span><span class="document-name">Corporate Governance Policy</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Shareholders Agreement">
+          <span class="document-number">18</span><span class="document-name">Shareholders Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Founders Agreement">
+          <span class="document-number">19</span><span class="document-name">Founders Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Memorandum of Understanding">
+          <span class="document-number">20</span><span class="document-name">Memorandum of Understanding</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Partnership Agreement">
+          <span class="document-number">21</span><span class="document-name">Partnership Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Terms and Conditions of Sale">
+          <span class="document-number">22</span><span class="document-name">Terms and Conditions of Sale</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="E-Commerce Terms and Conditions">
+          <span class="document-number">23</span><span class="document-name">E-Commerce Terms and Conditions</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Influencer Agreement">
+          <span class="document-number">24</span><span class="document-name">Influencer Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Digital Marketing Agreement">
+          <span class="document-number">25</span><span class="document-name">Digital Marketing Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Intellectual Property Assignment">
+          <span class="document-number">26</span><span class="document-name">Intellectual Property Assignment</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Trademark Licence Agreement">
+          <span class="document-number">27</span><span class="document-name">Trademark Licence Agreement</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Cybersecurity Policy">
+          <span class="document-number">28</span><span class="document-name">Cybersecurity Policy</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Incident Response Plan">
+          <span class="document-number">29</span><span class="document-name">Incident Response Plan</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <div class="document-item" data-document-name="Artificial Intelligence Usage Policy">
+          <span class="document-number">30</span><span class="document-name">Artificial Intelligence Usage Policy</span>
+          <button type="button" class="theme-btn btn-style-one purchase-btn" data-product-id="d6f8c72f-236e-4b30-9296-2df1159da515">Download</button>
+        </div>
+        <p class="document-empty" id="documentEmpty">No documents match your search.</p>
       </div>
     </div>
   </section>
-	<!--End Pricing Section -->
+	<!-- End Document Catalogue -->
 
   
 
@@ -406,6 +622,10 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const purchaseButtons = document.querySelectorAll(".purchase-btn");
+  const documentItems = document.querySelectorAll(".document-item");
+  const documentSearch = document.getElementById("documentSearch");
+  const documentEmpty = document.getElementById("documentEmpty");
+  const purchaseModalTitle = document.getElementById("purchaseModalLabel");
   const purchaseForm = document.getElementById("purchaseForm");
   const customerNameInput = document.getElementById("customerName");
   const customerEmailInput = document.getElementById("customerEmail");
@@ -413,6 +633,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const continuePaymentButton = document.getElementById("continuePaymentBtn");
   let selectedProductId = null;
   let selectedButton = null;
+  let selectedDocumentName = "";
+
+  documentSearch.addEventListener("input", () => {
+    const searchTerm = documentSearch.value.trim().toLowerCase();
+    let matchingDocuments = 0;
+
+    documentItems.forEach(item => {
+      const documentName = item.dataset.documentName.toLowerCase();
+      const isVisible = documentName.includes(searchTerm);
+      item.style.display = isVisible ? "flex" : "none";
+      if (isVisible) {
+        matchingDocuments += 1;
+      }
+    });
+
+    documentEmpty.style.display = matchingDocuments ? "none" : "block";
+  });
 
   function showPurchaseError(message) {
     purchaseError.textContent = message;
@@ -425,12 +662,16 @@ document.addEventListener("DOMContentLoaded", () => {
     purchaseError.style.display = "none";
     continuePaymentButton.disabled = false;
     continuePaymentButton.textContent = "Continue to Payment";
+    purchaseModalTitle.textContent = selectedDocumentName
+      ? `Purchase ${selectedDocumentName}`
+      : "Complete Your Purchase";
   }
 
   purchaseButtons.forEach(button => {
     button.addEventListener("click", () => {
       selectedProductId = button.getAttribute("data-product-id");
       selectedButton = button;
+      selectedDocumentName = button.closest(".document-item").dataset.documentName;
       resetPurchaseModal();
       $("#purchaseModal").modal("show");
       window.setTimeout(() => customerNameInput.focus(), 300);
@@ -483,7 +724,7 @@ document.addEventListener("DOMContentLoaded", () => {
       continuePaymentButton.textContent = "Continue to Payment";
       if (selectedButton) {
         selectedButton.disabled = false;
-        selectedButton.textContent = "Download Document";
+        selectedButton.textContent = "Purchase";
       }
     }
   });
@@ -491,10 +732,11 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#purchaseModal").on("hidden.bs.modal", () => {
     if (selectedButton && !continuePaymentButton.disabled) {
       selectedButton.disabled = false;
-      selectedButton.textContent = "Download Document";
+      selectedButton.textContent = "Purchase";
     }
     selectedProductId = null;
     selectedButton = null;
+    selectedDocumentName = "";
     purchaseForm.classList.remove("was-validated");
   });
 });

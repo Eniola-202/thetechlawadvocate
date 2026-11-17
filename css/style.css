@@ -4071,6 +4071,13 @@ Section Title
     display: none;
   }
 }
+.subtitle2{
+  font-size: 18px;
+  color: var(--sec-title-subtitle-color);
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
 .sec-title .sub-title {
   color: var(--sec-title-subtitle-color);
   display: inline-block;
@@ -4115,7 +4122,7 @@ Section Title
   color: var(--sec-title-color);
   font-family: var(--sec-title-font-family);
   font-weight: var(--sec-title-font-weight);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.08em;
   margin-bottom: 0;
 }
 @media (max-width: 575.98px) {
@@ -7779,10 +7786,10 @@ Section Title
 }
 .main-slider .sub-title {
   color: white;
-  opacity: 50%;
+  opacity: 0.75;
   font-family: var(--style-font);
   font-size: 200px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: 5px;
 }
@@ -7804,8 +7811,10 @@ Section Title
 .main-slider .title {
   position: relative;
   color: var(--theme-color-light);
+  opacity: 0.72;
+  font-weight: 200;
   line-height: 72px;
-  font-size: 60px;
+  font-size: 40px;
   margin-bottom: 28px;
   text-transform: capitalize;
 }
@@ -16588,7 +16597,9 @@ Sidebar
 .team-details__bottom-left-text {
   padding-top: 30px;
 }
-
+.text-block{
+   text-align: justify;
+}
 .team-details__bottom-right {
   display: block;
   margin-left: 70px;

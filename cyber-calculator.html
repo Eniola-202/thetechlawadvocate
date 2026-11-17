@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cyber Insurance Premium Calculator | Harrison &amp; Morrison Insurance Brokers</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
+:root{--bg:#f4efec;--card:#fff;--ink:#011425;--mut:#54595f;--line:#e3ddda;--gold:#3E6CB4;--navy:#011425;--ok:#3d8065;--bad:#b84d4d;--bar:#3E6CB4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Poppins",Arial,sans-serif}
+header{background:var(--navy);color:#fff;padding:28px 20px;border-bottom:4px solid var(--gold)}
+header h1{margin:0;font:600 1.45rem/1.25 "Playfair Display",Georgia,serif}header p{margin:6px 0 0;color:rgba(255,255,255,.78);font-size:.88rem}
+main{max-width:1180px;margin:0 auto;padding:45px 20px 70px;display:grid;gap:24px;grid-template-columns:1.1fr .9fr;align-items:start}
+@media(max-width:780px){main{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:0;padding:30px;box-shadow:0 12px 35px rgba(1,20,37,.07)}
+.sticky{position:relative;top:auto;align-self:start}
+h2{color:var(--navy);font:600 1.15rem/1.35 "Playfair Display",Georgia,serif;margin:24px 0 10px}h2:first-child{margin-top:0}
+label{display:block;font-size:.8rem;font-weight:500;color:var(--mut);margin:12px 0 5px}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:0;background:#fff;color:var(--ink);font:inherit;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(62,108,180,.12);outline:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;gap:8px;align-items:center;margin:6px 0;font-size:.92rem;color:var(--ink)}.chk input{width:auto}
+.big{font:600 2rem "Playfair Display",Georgia,serif;color:var(--gold);margin:2px 0;overflow-wrap:anywhere}
+.sub{color:var(--mut);font-size:.85rem}
+.bar{margin:10px 0}.bar .t{display:flex;justify-content:space-between;gap:8px;font-size:.88rem}
+.bar .b{height:8px;background:var(--line);border-radius:0;overflow:hidden;margin-top:5px}.bar .b i{display:block;height:100%;background:var(--bar)}
+.pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.8rem;font-weight:600;border:1px solid currentColor;margin:0 6px 4px 0}
+button{background:var(--gold);color:#fff;border:0;border-radius:0;padding:11px 18px;font:600 .85rem "Poppins",Arial,sans-serif;cursor:pointer;margin-top:12px;transition:background .2s,transform .2s}
+button:hover{background:var(--navy);transform:translateY(-1px)}
+.full{grid-column:1/-1}.note{font-size:.78rem;color:var(--mut)}
+.footer-note{background:var(--navy);border:0;box-shadow:none;color:rgba(255,255,255,.82);line-height:1.75;margin-top:0;padding:30px 34px}
+.footer-note b{color:#fff;font-family:"Playfair Display",Georgia,serif;font-size:.95rem}
+.logo{display:flex;align-items:center;gap:12px}.logo svg{flex:none}
+.lead{margin-top:18px;padding-top:6px;border-top:1px solid var(--line)}
+.sec{background:transparent;border:1px solid var(--navy);color:var(--navy)}
+.sec:hover{background:var(--navy);color:#fff}
+#psum{display:none;white-space:pre-wrap;font-size:.9rem;border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:12px}
+@media(max-width:780px){.card{padding:22px}.row{grid-template-columns:1fr}}
+@media print{main>section:first-child,.noprint{display:none!important}main{display:block}.sticky{position:static}#psum{display:block}body{background:#fff;color:#000}}
+</style></head><body>
+<header><div class="logo"><svg width="46" height="46" viewBox="0 0 46 46" aria-label="H&M monogram"><rect x="1" y="1" width="44" height="44" rx="8" fill="none" stroke="#3E6CB4" stroke-width="2"/><text x="23" y="29" text-anchor="middle" font-family="Georgia,serif" font-size="17" font-weight="700" fill="#3E6CB4">H&amp;M</text></svg><div><h1>Cyber Insurance Premium Calculator</h1><p>Harrison &amp; Morrison Insurance Brokers · NAICOM-registered insurance brokers</p></div></div></header>
+<main>
+<section class="card">
+<h2>1. Business profile</h2>
+<div class="row"><div><label>Currency</label><select id="cur"></select></div><div><label>Rate: 1 USD =</label><input id="fx" type="number" step="any"></div></div>
+<label>Industry</label><select id="ind"></select>
+<div class="sub" id="indinfo"></div>
+<div class="row"><div><label>Annual turnover / revenue</label><input id="rev" type="number" min="0"></div><div><label>Employees</label><input id="emp" type="number" min="1" value="40"></div></div>
+<div class="row"><div><label>IT systems (approx.)</label><input id="sys" type="number" min="1" value="15"></div><div><label>Business locations</label><input id="loc" type="number" min="1" value="2"></div></div>
+<h2>2. Data held</h2>
+<div class="row"><div><label>Customers / data subjects</label><input id="cus" type="number" min="0" value="20000"></div>
+<div><label>Main type of data</label><select id="dt"><option value="0.5|40">Basic contact details</option><option value="1|100" selected>Personal data (ID, address, DOB)</option><option value="1.5|200">Sensitive (health, financial, biometric)</option><option value="1.3|150">Payment card data</option></select></div></div>
+<label>Dependence on cloud infrastructure</label><select id="cld"><option value="0">Low (mostly on-premises)</option><option value="0.04" selected>Medium (hybrid)</option><option value="0.08">High (core operations in cloud)</option></select>
+<label>Expected downtime after a major attack (days)</label><input id="dwn" type="range" min="1" max="30" value="7"><div class="sub" id="dwnv"></div>
+<h2>3. Security and resilience</h2>
+<div class="row"><div><label>Cybersecurity maturity</label><select id="mat"><option value="0.10">1 · Basic / ad hoc</option><option value="0.04">2 · Developing</option><option value="0" selected>3 · Defined</option><option value="-0.05">4 · Managed</option><option value="-0.10">5 · Optimised / certified</option></select></div>
+<div><label>Multi-factor authentication</label><select id="mfa"><option value="0">None</option><option value="-0.06">Partial (some users or systems)</option><option value="-0.12" selected>Full (email, remote, admin)</option></select></div></div>
+<label>Backup and disaster recovery</label><select id="bk"><option value="0.05">None / untested</option><option value="-0.03">Basic backups</option><option value="-0.07" selected>Offsite backups, DR tested</option><option value="-0.10">Immutable backups and tested DR plan</option></select>
+<div id="ctl"></div>
+<h2>4. History and compliance</h2>
+<div class="row"><div><label>Previous cyber incidents / claims</label><select id="clm"><option value="0">None</option><option value="0.08">Incident, no claim</option><option value="0.25">1 claim</option><option value="0.5">2 or more claims</option></select></div>
+<div><label>Regulatory exposure and compliance (e.g. NDPA 2023)</label><select id="reg"><option value="0">Compliant, independently audited</option><option value="0.05" selected>Partly compliant</option><option value="0.08">Not yet assessed</option><option value="0.15">Known gaps</option></select></div></div>
+<h2>5. Cover wanted</h2>
+<div class="row"><div><label>Desired coverage limit</label><select id="lim"></select></div><div><label>Deductible</label><select id="ded"><option value="0">Low</option><option value="0.08">Medium (-8%)</option><option value="0.15">High (-15%)</option></select></div></div>
+</section>
+
+<section class="card sticky"><h2>Estimated annual premium</h2>
+<div class="big" id="prem">-</div><div class="sub" id="range"></div>
+<div style="margin-top:10px"><span class="pill" id="cls"></span><span class="pill" id="risk"></span></div>
+<div class="sub" id="score"></div>
+<h2>Potential loss by scenario</h2><div id="sc"></div>
+<h2>Cover recommendation</h2><div id="rec2"></div>
+<button id="copy">Copy summary for a broker review</button>
+<button id="pdf" class="sec noprint">Save as PDF / print summary</button>
+<p class="note" id="msg"></p>
+<div id="psum"></div>
+<div class="lead noprint"><h2>Request a broker review</h2>
+<label>Full name</label><input id="ln" autocomplete="name">
+<label>Company</label><input id="lc" autocomplete="organization">
+<div class="row"><div><label>Email</label><input id="le" type="email" autocomplete="email"></div><div><label>Phone</label><input id="lp" type="tel" autocomplete="tel"></div></div>
+<button id="send">Send my details and estimate</button>
+<p class="note" id="lmsg">Opens your email app with the estimate ready to send to Harrison &amp; Morrison.</p></div>
+</section>
+
+<footer class="card full note footer-note"><b>About Harrison &amp; Morrison Insurance Brokers.</b> Harrison &amp; Morrison Nigeria Limited (RC-232884), incorporated on 21 October 1993, is a registered insurance brokerage authorised by the National Insurance Commission (NAICOM), serving individuals and businesses as a trusted intermediary between clients and insurers. The firm facilitates access to cyber insurance and related technology covers, including protection against cyberattacks, ransomware, data breaches, business interruption, digital fraud, technology errors and omissions, and professional liability, subject to insurers&rsquo; policy terms and availability. It works with technology, cybersecurity and legal professionals, including Tech Law Advocates.<br><br>
+<b>Important.</b> This calculator gives indicative figures from general benchmarks and industry risk classifications that are starting points, not actuarial conclusions. It is not a quotation, an offer of cover or professional advice. Actual terms depend on insurer underwriting, controls, turnover, data volume, claims history and business interruption exposure. Exchange rates are editable placeholders. Contact Harrison &amp; Morrison for a formal quotation.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const IND=[["Banking, Financial Services & Insurance (BFSI)",1.7,0],["Telecommunications & Digital Communications",1.6,0],["Healthcare & Pharmaceuticals",1.65,0],["Energy, Oil & Gas & Utilities",1.55,0],
+["Information Technology & Software Development",1.35,1],["Government & Public Administration",1.3,1],["E-commerce & Retail",1.35,1],["Transportation, Logistics & Aviation",1.25,1],["Manufacturing & Industrial Production",1.25,1],
+["Professional & Business Services",1.0,2],["Education & Research Institutions",1.0,2],["Media, Entertainment & Digital Content",1.0,2],["Hospitality, Tourism & Travel",1.05,2],["Real Estate & Construction",0.95,2],
+["Agriculture & Agribusiness",0.9,3]];
+const CLS=[["Very high","var(--bad)"],["High","var(--gold)"],["Moderate","var(--ok)"],["Variable","var(--mut)"]];
+const RISKS=["Banking and payment fraud, ransomware, data breaches","Network attacks, service disruption, SIM-swap fraud, customer data breaches","Patient data theft, ransomware, medical system disruption","Operational technology and industrial control compromise, infrastructure disruption","Source-code theft, cloud breaches, supply-chain attacks","Critical infrastructure attacks, identity theft, public-service disruption","Payment fraud, customer data theft, website attacks","Fleet disruption, booking system compromise, passenger and cargo data breaches","Factory shutdown, IP theft, supply-chain attacks","Client confidentiality breaches, legal data theft, professional liability","Student data breaches, ransomware, research data theft","Account takeover, piracy, IP theft, platform disruption","Reservation system attacks, card fraud, guest data breaches","Business email compromise, transaction fraud, client data exposure","Smart-farming attacks, supply-chain disruption, operational data compromise"];
+const CUR=[["NGN","₦",1500],["USD","$",1],["GBP","£",0.79],["ZAR","R",18.5],["KES","KSh",129],["GHS","GH₵",12]];
+const CTL=[["Endpoint detection and response (EDR)",.06],["Staff phishing training",.04],["Written, tested incident response plan",.04],["Regular patching",.03]];
+const LIMS=[250e3,500e3,1e6,2e6,5e6,10e6];
+$("ind").innerHTML=IND.map((x,i)=>`<option value="${i}">${x[0]}</option>`).join("");
+$("cur").innerHTML=CUR.map((c,i)=>`<option value="${i}">${c[0]} (${c[1]})</option>`).join("");
+$("ctl").innerHTML=CTL.map((c,i)=>`<label class="chk"><input type="checkbox" class="c" data-w="${c[1]}" ${i==0?"checked":""}> ${c[0]}</label>`).join("");
+let sym="₦",fx=1500;
+const fmt=u=>sym+Math.round(u*fx).toLocaleString("en-US");
+function fillLimits(){const k=$("lim").value||"2";$("lim").innerHTML=LIMS.map((l,i)=>`<option value="${i}">${fmt(l)}</option>`).join("");$("lim").value=k}
+function calc(){
+const rev=Math.max(0,+$("rev").value)/fx,cus=Math.max(0,+$("cus").value),dwn=+$("dwn").value;
+$("dwnv").textContent=dwn+" days";
+const I=IND[+$("ind").value],[sw,pc]=$("dt").value.split("|").map(Number);
+$("indinfo").textContent="Typical risks: "+RISKS[+$("ind").value];
+let cr=0;document.querySelectorAll(".c").forEach(c=>{if(c.checked)cr+=+c.dataset.w});
+const credits=-(+$("mfa").value)-Math.min(0,+$("bk").value)-Math.min(0,+$("mat").value)+cr;
+const debits=Math.max(0,+$("bk").value)+Math.max(0,+$("mat").value)+(+$("cld").value)+(+$("clm").value)+(+$("reg").value);
+const ctl=Math.max(.55,1-Math.min(credits,.45)+debits);
+const size=Math.min(1.6,Math.max(.7,.8+.3*Math.log10(Math.max(rev,1e5)/1e6+1)));
+const recF=1+Math.min(cus/100000,1)*.3*sw;
+const sysF=1+Math.min((+$("sys").value)/100+(Math.max(1,+$("loc").value)-1)*.02,.2);
+const ded=1-(+$("ded").value),lim=LIMS[+$("lim").value];
+const score=I[1]*recF*sysF*ctl;
+const rol=.025*I[1]*size*recF*sysF*ctl*ded;
+const prem=Math.max(lim*rol,500);
+$("prem").textContent=fmt(prem)+" / yr";
+$("range").textContent="Likely range: "+fmt(prem*.8)+" to "+fmt(prem*1.2)+" · about "+(rol*100).toFixed(2)+"% of limit";
+$("cls").textContent="Industry class: "+CLS[I[2]][0];$("cls").style.color=CLS[I[2]][1];
+const lvl=score<1.0?["Lower overall risk","var(--ok)"]:score<1.8?["Moderate overall risk","var(--gold)"]:["Elevated overall risk","var(--bad)"];
+$("risk").textContent=lvl[0];$("risk").style.color=lvl[1];
+$("score").textContent="Risk score "+score.toFixed(2)+" (industry base "+I[1].toFixed(2)+" adjusted for controls, data and exposure)";
+const cf=Math.max(.55,Math.min(1.3,ctl));
+const S=[["Ransomware",(dwn*(rev/365)*.7+30000+.006*rev)*(.8+.2*cf)],["Data breach",(cus*pc*cf+25000)],["Business email compromise",Math.min(125000,.02*rev+20000)+15000]];
+const mx=Math.max(...S.map(s=>s[1]));
+$("sc").innerHTML=S.map(s=>`<div class="bar"><div class="t"><span>${s[0]}</span><b>${fmt(s[1])}</b></div><div class="b"><i style="width:${s[1]/mx*100}%"></i></div></div>`).join("");
+const need=mx*1.2;let ri=LIMS.findIndex(l=>l>=need);if(ri<0)ri=LIMS.length-1;
+const ok=lim>=need;
+$("rec2").innerHTML=`<p style="margin:0">Suggested limit: <b>${fmt(LIMS[ri])}</b> (largest modelled scenario plus 20% buffer).</p><p class="sub" style="margin:4px 0 0">Your selected limit of ${fmt(lim)} is <b style="color:${ok?"var(--ok)":"var(--bad)"}">${ok?"adequate":"below the suggested level"}</b> for the scenarios modelled.</p>`;
+window._sum=`Cyber insurance estimate (Harrison & Morrison)\nIndustry: ${I[0]} (${CLS[I[2]][0]})\nTurnover: ${fmt(rev)} | Employees: ${$("emp").value} | Data subjects: ${cus}\nLimit: ${fmt(lim)} | Premium: ${fmt(prem*.8)} to ${fmt(prem*1.2)} per year\nSuggested limit: ${fmt(LIMS[ri])} | ${lvl[0]}`;
+}
+function setCur(){const c=CUR[+$("cur").value];sym=c[1];$("fx").value=c[2];fx=c[2]}
+$("cur").onchange=()=>{const old=fx;setCur();$("rev").value=Math.round($("rev").value/old*fx);fillLimits();calc()};
+$("fx").oninput=()=>{fx=+$("fx").value||1;fillLimits();calc()};
+document.querySelectorAll("input,select").forEach(e=>{if(e.id!=="cur"&&e.id!=="fx")e.addEventListener("input",calc)});
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText(window._sum);$("msg").textContent="Summary copied. Send it to your broker."}catch(e){$("msg").textContent="Copy failed. Select the figures above and copy them manually."}};
+const BROKER_EMAIL=""; // set to the brokerage inbox, e.g. quotes@yourdomain.com
+const _calc=calc;calc=function(){_calc();$("psum").textContent=window._sum};
+$("pdf").onclick=()=>{$("psum").textContent=window._sum;try{window.print()}catch(e){$("msg").textContent="Printing is blocked here. Copy the summary instead."}};
+$("send").onclick=()=>{const n=$("ln").value.trim(),e=$("le").value.trim();
+if(!n||!/^\S+@\S+\.\S+$/.test(e)){$("lmsg").textContent="Please enter your name and a valid email address.";return}
+const body=`Name: ${n}\nCompany: ${$("lc").value}\nEmail: ${e}\nPhone: ${$("lp").value}\n\n${window._sum}`;
+if(!BROKER_EMAIL){navigator.clipboard&&navigator.clipboard.writeText(body).catch(()=>{});$("lmsg").textContent="Details copied. Please send them to your Harrison & Morrison broker.";return}
+window.location.href="mailto:"+BROKER_EMAIL+"?subject="+encodeURIComponent("Cyber insurance review request: "+n)+"&body="+encodeURIComponent(body)};
+setCur();$("rev").value=150000000;fillLimits();$("lim").value="2";calc();
+</script></body></html>
